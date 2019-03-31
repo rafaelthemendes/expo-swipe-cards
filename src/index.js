@@ -1,6 +1,7 @@
 import React from 'react';
 import { registerRootComponent, Font } from 'expo';
 import App from './pages/App';
+import './config/StatusBarConfig';
 
 class Main extends React.Component {
   state = {
@@ -9,7 +10,7 @@ class Main extends React.Component {
 
   async componentDidMount() {
     await Font.loadAsync({
-      'gotham-rounded': require('../assets/fonts/ProximaNovaSoftW03Bold.ttf')
+      'proxima-soft-bold': require('../assets/fonts/ProximaNovaSoftW03Bold.ttf')
     });
     this.setState({ fontLoaded: true });
   }
