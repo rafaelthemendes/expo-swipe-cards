@@ -1,7 +1,7 @@
 # Expo Swipe Cards
 
 This is a basic project for studying purposes. It uses Expo and react native animations.
-It shows a deck of cards like Tinder.
+It shows a deck of cards like Tinder App.
 
 ## Running the App
 
