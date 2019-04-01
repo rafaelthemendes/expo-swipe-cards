@@ -34,7 +34,7 @@ class App extends React.Component {
         key={item.id}
         image={{ uri: item.uri }}
         containerStyle={{ borderRadius: 10 }}
-        imageWrapperStyle={{ borderTopStartRadius: 10, borderTopEndRadius: 10 }}
+        imageWrapperStyle={{ borderTopStartRadius: 10, borderTopEndRadius: 10, overflow: 'hidden' }}
       >
         <Text style={{ fontFamily: 'proxima-soft-bold' }}>{item.text}</Text>
       </Card>
@@ -53,7 +53,7 @@ class App extends React.Component {
         >
           All Done!
         </Text>
-        <Button onPress={this.resetDeck} title="Reset" titleStyle={{ fontFamily: 'proxima-soft-bold' }} />
+        <Button onPress={this.resetDeck} title="Again!" titleStyle={{ fontFamily: 'proxima-soft-bold' }} />
       </View>
     );
   }
@@ -74,7 +74,9 @@ class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header centerComponent={{ text: 'Swipe Card', style: { color: '#fff' } }} />
+        <Header
+          centerComponent={{ text: 'Mendão Swipe Cards', style: { color: '#fff', fontFamily: 'proxima-soft-bold' } }}
+        />
         <Deck
           data={this.state.data}
           renderCard={this.renderCard}
