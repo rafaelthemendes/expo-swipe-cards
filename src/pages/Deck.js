@@ -114,7 +114,7 @@ class Deck extends Component {
   }
 
   render() {
-    return <View style={{ zIndex: 1 }}>{this.renderCard()}</View>;
+    return <View>{this.renderCard()}</View>;
   }
 }
 

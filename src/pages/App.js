@@ -36,24 +36,16 @@ class App extends React.Component {
         containerStyle={{ borderRadius: 10 }}
         imageWrapperStyle={{ borderTopStartRadius: 10, borderTopEndRadius: 10, overflow: 'hidden' }}
       >
-        <Text style={{ fontFamily: 'proxima-soft-bold' }}>{item.text}</Text>
+        <Text style={styles.text}>{item.text}</Text>
       </Card>
     );
   }
 
   renderNoMoreCards() {
     return (
-      <View style={{ alignItems: 'center', marginBottom: -200 }}>
-        <Text
-          style={{
-            fontSize: 20,
-            fontFamily: 'proxima-soft-bold',
-            margin: 50
-          }}
-        >
-          All Done!
-        </Text>
-        <Button onPress={this.resetDeck} title="Again!" titleStyle={{ fontFamily: 'proxima-soft-bold' }} />
+      <View style={styles.noMoreCardsContainer}>
+        <Text style={[styles.text, styles.noMoreCardsText]}>All Done!</Text>
+        <Button onPress={this.resetDeck} title="Again!" titleStyle={styles.text} />
       </View>
     );
   }
@@ -62,10 +54,10 @@ class App extends React.Component {
     return (
       <View style={styles.countersContainer}>
         <View style={styles.counterView}>
-          <Text style={styles.counterViewText}>{this.state.leftCounter}</Text>
+          <Text style={styles.text}>{this.state.leftCounter}</Text>
         </View>
         <View style={styles.counterView}>
-          <Text style={styles.counterViewText}>{this.state.rightCounter}</Text>
+          <Text style={styles.text}>{this.state.rightCounter}</Text>
         </View>
       </View>
     );
@@ -74,17 +66,17 @@ class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header
-          centerComponent={{ text: 'Mendão Swipe Cards', style: { color: '#fff', fontFamily: 'proxima-soft-bold' } }}
-        />
-        <Deck
-          data={this.state.data}
-          renderCard={this.renderCard}
-          renderNoMoreCards={this.renderNoMoreCards}
-          resetDeck={this.resetDeck.bind(this)}
-          onSwipeRight={this.updateCounters.bind(this, 'right')}
-          onSwipeLeft={this.updateCounters.bind(this, 'left')}
-        />
+        <Header centerComponent={{ text: 'Mendão Swipe Cards', style: [styles.text, { color: '#fff' }] }} />
+        <View style={styles.deckView}>
+          <Deck
+            data={this.state.data}
+            renderCard={this.renderCard}
+            renderNoMoreCards={this.renderNoMoreCards}
+            resetDeck={this.resetDeck.bind(this)}
+            onSwipeRight={this.updateCounters.bind(this, 'right')}
+            onSwipeLeft={this.updateCounters.bind(this, 'left')}
+          />
+        </View>
         {this.renderCounters()}
       </View>
     );
@@ -96,8 +88,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff'
   },
+  deckView: {
+    height: 250,
+    zIndex: 1
+  },
   countersContainer: {
-    marginTop: 200,
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'center'
@@ -105,14 +100,20 @@ const styles = StyleSheet.create({
   counterView: {
     width: 80,
     height: 80,
-    margin: 50,
+    marginVertical: 10,
+    marginHorizontal: 50,
     borderWidth: 8,
     borderRadius: 50,
     borderColor: '#E2E2E2',
     alignItems: 'center',
     justifyContent: 'center'
   },
-  counterViewText: {
+  noMoreCardsContainer: { alignItems: 'center' },
+  noMoreCardsText: {
+    fontSize: 20,
+    margin: 50
+  },
+  text: {
     fontFamily: 'proxima-soft-bold'
   }
 });
