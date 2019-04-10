@@ -10,7 +10,7 @@ class Main extends React.Component {
 
   async componentDidMount() {
     await Font.loadAsync({
-      'proxima-soft-bold': require('../assets/fonts/ProximaNovaSoftW03Bold.ttf')
+      'proxima-soft-bold': require('../assets/fonts/ProximaNova-Bold.ttf')
     });
     this.setState({ fontLoaded: true });
   }
